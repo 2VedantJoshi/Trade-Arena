@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios, { all } from "axios";
+import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
 
 // import { holdings } from "../data/data";
@@ -11,7 +11,7 @@ const Holdings = () => {
     let api = "https://trade-arena-1.onrender.com/allHoldings"
     axios.get(api).then((res) => {
       let allHoldings = res.data;
-      let totalInvest = 0;
+      
       // console.log(res.data);
       setAllHoldings(allHoldings);
     });

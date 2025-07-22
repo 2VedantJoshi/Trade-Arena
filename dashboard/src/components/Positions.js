@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const Positions = () => {
 
-  const [allPositions,setAllPositions] = useState([]);
+const Positions = () => {
+  const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    let api = "https://trade-arena-1.onrender.com/allpositions"
-
+    let api = "https://trade-arena-1.onrender.com/allpositions";
     axios.get(api).then((res) => {
       let allPositions = res.data;
-      let totalInvest = 0;
       console.log(allPositions);
-      setAllPositions(allPositions)
-    })
-  })
-
+      setAllPositions(allPositions);
+    });
+  }, []);
 
   return (
     <>
@@ -45,10 +42,12 @@ const Positions = () => {
                 <td>{stock.qty}.</td>
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
-                <td className={profClass}>{(curValue - stock.avg * stock.qty).toFixed(2)}</td>
+                <td className={profClass}>
+                  {(curValue - stock.avg * stock.qty).toFixed(2)}
+                </td>
                 <td className={dayClass}>{stock.day}</td>
               </tr>
-            )
+            );
           })}
         </table>
       </div>
