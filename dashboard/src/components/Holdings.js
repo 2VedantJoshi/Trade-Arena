@@ -8,9 +8,12 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    let api = "https://trade-arena-1.onrender.com/allHoldings"
+    axios.get(api).then((res) => {
+      let allHoldings = res.data;
+      let totalInvest = 0;
       // console.log(res.data);
-      setAllHoldings(res.data);
+      setAllHoldings(allHoldings);
     });
   }, []);
 

@@ -230,9 +230,17 @@ app.get("/allOrders", async (req, res) => {
   }
 });
 
+const startServer = async () => {
+  try {
+    await mongoose.connect(uri);
+    console.log("DB connected!");
+    app.listen(PORT, () => {
+      console.log(`App listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Could not connect to DB", error);
+    process.exit(1);
+  }
+};
 
-app.listen(PORT, () => {
-  console.log("App started!");
-  mongoose.connect(uri);
-  console.log("DB started!");
-});
+startServer();

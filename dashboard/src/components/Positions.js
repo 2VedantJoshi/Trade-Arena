@@ -4,10 +4,14 @@ const Positions = () => {
 
   const [allPositions,setAllPositions] = useState([]);
 
-  useEffect(()=>{
-    axios.get("http://localhost:3000/allpositions").then((res)=>{
-      console.log(res.data);
-      setAllPositions(res.data)
+  useEffect(() => {
+    let api = "https://trade-arena-1.onrender.com/allpositions"
+
+    axios.get(api).then((res) => {
+      let allPositions = res.data;
+      let totalInvest = 0;
+      console.log(allPositions);
+      setAllPositions(allPositions)
     })
   })
 

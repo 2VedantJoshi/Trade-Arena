@@ -5,7 +5,8 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allOrders").then((res) => {
+    let api = "https://trade-arena-1.onrender.com/allOrders"
+    axios.get(api).then((res) => {
       setOrders(res.data);
     });
   }, []);
